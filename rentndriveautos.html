@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentNDrive - Quality Car Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #4CAF50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-banner.png');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #222;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #4CAF50;
+            margin: 15px auto;
+        }
+        
+        .car-category {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            color: #333;
+            font-size: 26px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .car-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .car-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .car-details {
+            padding: 20px;
+        }
+        
+        .car-name {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .car-price {
+            color: #4CAF50;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .car-features {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .car-features span {
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .book-btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .footer-logo span {
+            color: #4CAF50;
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #20bd5a;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 10px;
+        }
+        
+        .copy-rights {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Rent<span>NDrive</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#fleet">Our Fleet</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Quality Cars for Rent</h1>
+                <p>Choose from our wide range of luxury, comfort and economy vehicles</p>
+                <a href="#fleet" class="btn">View Our Fleet</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="fleet">
+        <div class="container">
+            <h2 class="section-title">Our Fleet</h2>
+            
+            <!-- Luxury Category -->
+            <div class="car-category">
+                <h3 class="category-title">Luxury</h3>
+                <div class="car-grid">
+                    <!-- Lexus -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/lux-lexus.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Lexus</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>GPS</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Mercedes -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/lux-mercedes_e.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Mercedes E-Class</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>GPS</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- BMW -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/lux-toyota_fortuner.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Toyota Fortuner</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>GPS</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comfort Category -->
+            <div class="car-category">
+                <h3 class="category-title">Comfort</h3>
+                <div class="car-grid">
+                    <!-- Toyota Grande -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/com-toyota_grande.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Toyota Grande</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>Bluetooth</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Honda Civic -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/com-honda_civic.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Honda Civic</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>Bluetooth</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hyundai Sonata -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/com-hyundai_sonata.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Hyundai Sonata</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>5 Seats</span>
+                                <span>Automatic</span>
+                                <span>Bluetooth</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Economy Category -->
+            <div class="car-category">
+                <h3 class="category-title">Economy</h3>
+                <div class="car-grid">
+                    <!-- Suzuki Alto -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/eco-suzuki_alto.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Suzuki Alto</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>4 Seats</span>
+                                <span>Manual/Auto</span>
+                                <span>AC</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Suzuki Wagon R -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/eco-suzuki_wagonr.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Suzuki Wagon R</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>4 Seats</span>
+                                <span>Manual/Auto</span>
+                                <span>AC</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Suzuki Cultus -->
+                    <div class="car-card">
+                        <div class="car-image" style="background-image: url('images/eco-suzuki_cultus.png');"></div>
+                        <div class="car-details">
+                            <h4 class="car-name">Suzuki Cultus</h4>
+                            <p class="car-price">Contact for Price</p>
+                            <div class="car-features">
+                                <span>4 Seats</span>
+                                <span>Manual/Auto</span>
+                                <span>AC</span>
+                            </div>
+                            <a href="#contact" class="btn book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div style="text-align: center;">
+                <div class="contact-info">
+                    <p>Have questions or ready to book? Contact us via WhatsApp for quick responses.</p>
+                </div>
+                <a href="https://wa.me/923262700092" class="whatsapp-btn">
+                    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    Rent<span>NDrive</span>
+                </div>
+                <div class="footer-contact">
+                    <a href="https://wa.me/923262700092" class="whatsapp-btn">
+                        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        WhatsApp Us
+                    </a>
+                </div>
+            </div>
+            <div class="copy-rights">
+                &copy; 2025 RentNDrive. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
